@@ -6,14 +6,14 @@ venv:
 
 # Initializes virtual environment with basic requirements.
 prod:
-	source ./env/bin/activate; \
+
 	pip install -r requirements.txt; \
 	gunicorn --paste production.ini
 	npm install --production
 
 # Installs development dependencies.
 dev:
-	source ./env/bin/activate; \
+
 	pip3 install -r requirements.txt; \
 	pip3 install --upgrade pip setuptools; \
 	yarn generate-lock-entry; \
@@ -22,13 +22,12 @@ dev:
 
 # runs tests for your project
 test:
-	source ./env/bin/activate; \
+
 	pytest; \
 
 # Runs development server.
 # This step depends on `make dev`, however dependency is excluded to speed up dev server startup.
 run:
-	source ./env/bin/activate; \
 
 	webpack-dev-server --inline --hot & gunicorn --paste development.ini --reload
 
